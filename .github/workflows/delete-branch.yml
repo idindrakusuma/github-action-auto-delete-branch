@@ -3,6 +3,11 @@ name: Delete Staging Branch
 
 on:
   workflow_dispatch: # for manual triggering
+    inputs:
+      branchName:
+        description: 'Input your branch you want to delete'
+        required: true
+        type: string
   # schedule:
   #   - cron: '5 * * * *'
   # disabled schedule for healtier
@@ -14,6 +19,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Delete Branch
-        run: |
-          git fetch --prune
-          git push origin --delete test-1
+        run: echo "your input is ${{ inputs.branchName }}"
