@@ -16,7 +16,14 @@ jobs:
   delete-branch:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: 1. Checkout the Action
         uses: actions/checkout@v2
-      - name: Delete Branch
-        run: echo "your input is ${{ inputs.branchName }}"
+      - name: 2. Set Specific Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+      - name: 3. Deleting Branch
+        uses: dawidd6/action-delete-branch@v3
+        with:
+          github_token: ${{github.ACCESS_TOKEN }}
+          branches: ${{ inputs.branchName }}
