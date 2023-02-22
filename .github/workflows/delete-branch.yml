@@ -2,8 +2,10 @@
 name: Delete Staging Branch
 
 on:
-  schedule:
-    - cron: '5 * * * *'
+  workflow_dispatch: # for manual triggering
+  # schedule:
+  #   - cron: '5 * * * *'
+  # disabled schedule for healtier
 
 jobs:
   delete-branch:
